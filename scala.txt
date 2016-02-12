@@ -1,0 +1,118 @@
+//Exercise Week 2
+
+def countup(n:Int){
+
+   if(n>=1){
+	countup(n - 1)
+        print(n)
+	  }	
+
+}
+
+
+for(i<-1 to 30){
+     
+     if(i%3==0 && i%5==0)
+	println("Kyel Pogi typesafe")
+     else if(i%3==0) 
+	println("Kyel")
+     else if(i%5==0) 
+	println("Pogi")
+     else
+	println(i)
+}
+
+//Exercise Week 3
+
+val data=(-1,-1,3)
+val compare=(a:Int,b:Int) => if(a>b)a else b;
+def maximum(x:(Int,Int,Int),f:(Int,Int)=>Int)=
+{
+  if(x._1<x._2)
+  f(x._2,x._3)
+  else
+  f(x._1,x._3)
+}
+
+println("The maximum value is "+maximum(data,compare));
+
+var sumOdd=0
+var sumEven=0
+for(i<-0 to 10)
+  if(i%2==0)
+    sumEven+=i
+  else
+    sumOdd+=i
+
+
+println(+sumEven)
+println(sumOdd)
+
+
+
+def bunnyEars(bunnies:Int):Int={
+
+  if(bunnies==0){
+    return 0;
+  }
+  else{
+
+    2+bunnyEars(bunnies-1);
+
+  }
+
+}
+
+bunnyEars(10);
+bunnyEars(50);
+
+
+def fibonacci(n:Int):Int ={
+
+  if(n==1){
+    return 1;
+  }
+  else if(n==0)
+  {
+    return 0;
+  }
+  else{
+
+    fibonacci(n - 1)+(fibonacci(n - 2))
+  }
+
+}
+
+fibonacci(7)
+
+
+def triangle(rows:Int):Int={
+
+  if(rows==0){
+    return 0;
+  }
+  else{
+    rows+triangle(rows-1);
+
+  }
+
+
+}
+
+triangle(7);
+
+//takes the sum of the digits in the number
+def sumDigits(n:Int):Int={
+
+  if(n<10){
+    return n;
+  }
+
+  else{
+    sumDigits(n/10)+sumDigits(n%10);
+  }
+
+}
+
+sumDigits(123)
+
