@@ -1,0 +1,42 @@
+//Week 5
+//2/19/2016
+
+/*
+Write a function called “conditional” that takes a value x and two functions, p and f, and returns a value of the same type as x. 
+The p function is a predicate, taking the value x and returning a Boolean b. 
+The f function also takes the value x and returns a new value of the same type. Your “conditional” function should only invoke the function f(x) if p(x) is true, and otherwise return x. How many type parameters will the “conditional” function require?
+*/
+
+def conditional[A](x: A, p: A => Boolean, f: A => A) = {
+  if(p(x))f(x) else x
+}
+conditional[String]("Kobe", _.size > 0, _.reverse)
+conditional[Int](10,_>0,_+5)
+
+//functions that return a Boolean are called a predicate function
+//how many type paramater =1
+// underscore is a placeholder
+
+/*
+Write a higher-order function that takes an integer and returns a function. 
+The returned function should take a single integer argument (say, “x”) and return the product of x and the integer passed to the higher-order function.
+*/
+
+//a higher order function
+def fcn(a: Int) = (b: Int) => a * b
+val res = fcn(2)
+res(10)
+
+/*
+def curry[A,B,C](f: (A, B) => C): A => (B => C) = { your implementation here }
+*/
+//curry
+//you can put your parameter one at a time
+def add(a: Int, b:Int): Int = a + b
+def curry[A,B,C](f:(A,B) => C) : A => B => C = { (a: A) => { (b: B) => f(a,b) } }
+val imp=curry(add)
+
+imp(4)(10)
+
+val imp2=imp(1)(_)
+imp2(3)
