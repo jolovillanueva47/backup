@@ -16,7 +16,44 @@ def  fibonacci(n: Int):Int = n match  {
 }
 fibonacci(4)
 
+//convert this to tail recursion
+//def fact(n: Int) =
+//  if(n==0)  1
+//  else n*fact(n-1)
 
+
+//solution
+def factorial(number: Int) : Int = {
+  def factorialWithAccumulator(accumulator: Int, number: Int) : Int = {
+    if (number == 1)
+      return accumulator
+    else
+      factorialWithAccumulator(accumulator * number, number - 1)
+  }
+  factorialWithAccumulator(1, number)
+}
+//Convert to tail recursion
+//def sum(x: Int) = {
+//  var sum: Int = 0
+//  for(i <- 0 to x) {
+//    sum+=i
+//  }
+//  sum
+//}
+
+//solution
+def function(number:Int):Int={
+
+  def summation(acc:Int,number:Int):Int={
+    if(number==0)
+      return acc;
+    else
+      summation(acc+number,number-1)
+  }
+  summation(0,number)
+}
+
+function(6)
 
 
 //currying is like partially applied function where there is a chain
