@@ -1,0 +1,31 @@
+//CONVERT THIS CODE PATTERN MATCHING
+//def  fibonacci(n: Int):Int =  {
+//  if(n == 0)
+//    return 0;
+//  else if(n == 1)
+//    return 1;
+//  else
+//    return fibonacci(n - 1) + fibonacci(n - 2);
+//}
+
+//Solution
+def  fibonacci(n: Int):Int = n match  {
+  case 0 => 0
+  case 1 => 1
+  case _ => fibonacci(n - 1) + fibonacci(n - 2);
+}
+fibonacci(4)
+
+
+
+
+//currying is like partially applied function where there is a chain
+
+//WHAT DOES THIS FUNCTION ACCOMPLISH? GIVE AN EXAMPLE OF HOW YOU WILL INVOKE
+def fzero[A](x: A)(f: A ⇒ Unit): A = { f(x);x }
+
+
+//Solution:
+def output(x:String) = println(x.reverse)
+fzero[String]("kobe")(output)
+fzero[Int](5)(x=>println(x+4))
