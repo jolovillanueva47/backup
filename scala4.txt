@@ -1,0 +1,41 @@
+//Week 7
+//Create a list of the first 20 odd Long numbers. Can you create this with a for-loop, with thefilter operation,
+//and with the map operation? What’s the most efficient and expressive way to write this?
+
+//Solution
+for (i <- 0L to 9L; j = i * 2 + 1) yield j
+
+0L to 20L filter (_ % 2 == 1)
+
+0L to 20L filter (_ % 2 == 1)
+
+
+//Write a function titled "factors" that takes a number and returns a list of its factors, other than 1
+//and the number itself.For example, factors(15) should return List(3, 5).
+//Solution
+
+def factors(x: Int) = { 2 to (x-1) filter (x % _ == 0) }
+def uniqueFactors(l: Seq[Int]) = l flatMap factors
+uniqueFactors(List(9, 11, 13, 15))
+
+
+//Write a function that takes a list of strings and returns the longest string in the list.
+//  Can you avoid using mutable variables here? This is an excellent candidate for the list-folding operations
+// Can you implement this with both fold and reduce ?
+//Solution
+val names = List("Harry", "Hermione", "Ron", "Snape")
+def longest(l: List[String]): String = names.sortBy(0 - _.size).head
+longest(names)
+
+
+def longest1(l: List[String]): String = {
+     names.fold("")((a,i) => if (a.size < i.size) i else a)
+   }
+longest1(names)
+
+
+def longest2(l: List[String]): String = {
+     names.reduce((a,i) => if (a.size < i.size) i else a)
+   }
+
+longest2(names)
