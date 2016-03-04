@@ -1,0 +1,41 @@
+case class Node(key_value:Int, var left:Node, var right:Node)
+
+def insert(key:Int, node:Node):Unit={
+  if(key < node.key_value) { //compare value
+    if(node.left!=null)
+      insert(key, node.left); //recursion :: to go to the inside Node
+    else
+      node.left = Node(key, null, null); // "true" insert
+  } else if(key>=node.key_value) {
+    if(node.right!=null)
+      insert(key, node.right);
+    else
+      node.right= Node(key, null, null);
+  }
+}
+
+
+var root = Node(10, null, null)
+insert(2, root)
+var check = root
+insert(1, root)
+check = root
+insert(4, root)
+check = root
+insert(6, root)
+check = root
+
+
+
+def search(key:Int, node:Node):Node= {
+  if(node!=null) {
+    if(key==node.key_value)
+      return node;
+    if(key<node.key_value)
+      return search(key, node.left);
+    else
+      return search(key, node.right);
+  } else return null;
+}
+
+//search(6, root);
