@@ -1,0 +1,123 @@
+
+10 Scala Problems
+
+
+//1. Solution for Write a multiply function that multiples 2 integers without using *
+def multiply(multiplicand:Int, factor:Int): Int= {
+
+  def combine(multiplicand:Int, factor:Int, product: Int): Int =
+  {
+    if(factor==0) return product
+    else combine(multiplicand,factor-1,multiplicand+product)
+  }
+  combine(multiplicand,factor,0)
+}
+multiply(5,3)
+
+
+//2. Write fibbonaci iteratively and recursively
+def fibIterative( n : Int ) : Int = {
+  var a = 0
+  var b = 1
+  var i = 0
+
+  while( i < n ) {
+    val c = a + b
+    a = b
+    b = c
+    i = i + 1
+  }
+      a
+}
+
+fibIterative(2)
+def fibTail( n : Int) : Int = {
+  def fibMatch( n: Int, a:Int, b:Int): Int = n match {
+    case 0 => a
+    case _ => fibMatch( n-1, b, a+b )
+  }
+    fibMatch( n, 0, 1)
+}
+
+fibTail(2)
+
+//3.Determine if a String is an int or a double
+def isDouble(str: String): Boolean = {
+
+    str.matches("^-?+\\d+(\\.\\d{1,})$")
+}
+
+isDouble("10")
+isDouble("5.21")
+isDouble("-21")
+isDouble("-21.21")
+isDouble("0")
+isDouble("0.00")
+
+
+//4.Reverse a String iteratively and recursively
+
+def reverse(s: String) : String =
+  (for(i <- s.length-1 to 0 by -1) yield s(i)).mkString
+
+reverse("kobe123")
+
+
+def reverse2(str:String):String={
+  if ((null == str) || (str.length()  <= 1)) {
+    return str
+  }
+
+  def combine(str:String,acc:String):String={
+    if (str.length() == 0) {
+      return acc
+    } else {
+      combine(str.tail, str.head + acc)
+    }
+  }
+
+  combine(str,"")
+}
+
+reverse2("kobe123")
+
+//5 Check if String is a palindrome
+
+
+def isPalindrome[A](l: List[A]):Boolean = {
+  def test(check: Boolean, container: List[A]): Boolean = container match {
+    case Nil => check
+    case List(a) => check
+    case data=> test(check && container.head == container.last, container.tail.init)
+  }
+  test(true, l)
+}
+
+
+
+isPalindrome("Anna".toLowerCase().toList) //result true
+isPalindrome("".toList)
+isPalindrome("kayak".toList)
+isPalindrome("hello".toList)
+
+//6. Find pairs in an integer array whose sum is equal to 10
+def sumOfTen(numbers:Array[Int], n:Int=10){
+  if(numbers.length < 2){ printf("No pair can be added") }
+
+  val set=scala.collection.mutable.HashSet(numbers.length)
+
+  for(value <- numbers)
+  { var target = n - value; // if target number is not in set then add
+    if(!set.contains(target))
+    { set+=value}
+    else {printf("(%d, %d) %n", value, target); }
+  }
+}
+
+var myList = Array(2,4,3,5,6,-2,4,7,9,1)
+sumOfTen(myList)
+sumOfTen(Array(1,9))
+sumOfTen(Array(1))
+
+//7. Find the most frequent integer in an array
+
