@@ -119,5 +119,15 @@ sumOfTen(myList)
 sumOfTen(Array(1,9))
 sumOfTen(Array(1))
 
-//7. Find the most frequent integer in an array
+//7.Implement the exponent function
+
+def power(base: Int, exp: Int): BigInt = {
+  def combine(result: BigInt, exp: Int): BigInt = exp match {
+    case 0 => result
+    case _ => combine(result*base, exp-1)
+  }
+  combine(1, exp)
+}
+
+power(-1,5)
 
