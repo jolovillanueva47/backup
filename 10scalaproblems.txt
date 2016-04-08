@@ -131,3 +131,16 @@ def power(base: Int, exp: Int): BigInt = {
 
 power(-1,5)
 
+//8. Write a function that prints out the binary form of an int
+def binary(num:Int)={
+
+  def result(num:Int,res:String):String= num match {
+    case 0 => res
+    case _ => result(num/2,num%2+res)
+  }
+  print(result(num,""))
+
+}
+
+binary(156)
+binary(170)
