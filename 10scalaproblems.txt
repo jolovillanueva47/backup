@@ -144,3 +144,19 @@ def binary(num:Int)={
 
 binary(156)
 binary(170)
+
+
+//9.Determine if 2 Strings are anagrams
+val student = "tom marvolo riddle"
+val darklord= "i am lord voldemort"
+
+def anagram(string1:String, string2:String):Boolean={
+  if(student.replaceAll("\\s+","").toList.sorted.equals(
+    darklord.replaceAll("\\s+","").toList.sorted)){
+    return true
+  }
+  else{
+    return  false
+  }
+}
+anagram(student,darklord)
