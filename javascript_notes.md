@@ -16,3 +16,11 @@ null == undefined // true
 null === undefined // false
 '0' == false // true
 '0' === false // false
+
+Javascript has some comparison with Scala in some built in functions.
+higher order function are use for composability or elegance in coding
+Functions also in Scala:
+	1.filter
+	2.map
+	3.reduce
+In higher order functions, **functions are values**
